@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from './Nav'
 import Home from './pages/Home';
+import Login from './pages/Login';
 import ReactDOM from 'react-dom';
 
 
@@ -63,6 +64,7 @@ const MainRoute = () => (
         <Route path="/todos" component={Todos} />
         <Route path="/status" component={StatusComponent} />
         <Route path="/nav" component={Nav} />
+        <Route path="/login" component={Login} />
     </Switch>
 )
 
