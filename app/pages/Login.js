@@ -8,6 +8,7 @@ import axios from 'axios'
 import {BrowserRouter , Switch, Route, Redirect } from 'react-router-dom'
 
 require("../../bootstrap/bootstrap.min.css");
+require("../../bootstrap/signin.css");
 
 
 
@@ -56,10 +57,22 @@ echo json_encode($rs);
     render() {
             return(
 
-                <div className="btn btn-danger">
-                    登陆
+                <div className="container">
+
+                    <form className="form-signin">
+                        <h2 className="form-signin-heading">Please sign in</h2>
+                        <label htmlFor="inputEmail" className="sr-only">Email address</label>
+                        <input type="email" id="inputEmail" className="form-control" placeholder="Email address"
+                               required="" autoFocus="" />
+                            <label htmlFor="inputPassword" className="sr-only">Password</label>
+                            <input type="password" id="inputPassword" className="form-control" placeholder="Password"
+                                   required="" />
+
+                                <input type="submit" className="btn btn-lg btn-primary btn-block" />Sign in
+                    </form>
+
                 </div>
-            );
+                );
 
     }
 }
@@ -83,7 +96,7 @@ onChange={v=>{this.handlechange("username",v)}}
 class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {name: 'Hello Runoob!',pwd:'pwd'};
+        this.state = {name: '',pwd:''};
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangePwd = this.handleChangePwd.bind(this);
     }
@@ -105,14 +118,19 @@ class Login extends React.Component {
     render() {
         // var value = this.state.value;
         return  (
-            <form onSubmit={this.handleSubmit.bind(this)}>
 
-            <input type="text" value={this.state.name} onChange={this.handleChangeName} />
-            <input type="text" value={this.state.pwd} onChange={this.handleChangePwd} />
-            <h4>{this.state.name}</h4>
+            <div className="container">
 
-            <input type="submit" value="提交" />
-        </form>
+                <form className="form-signin" onSubmit={this.handleSubmit.bind(this)}>
+                    <h2 className="form-signin-heading">请登录</h2>
+                    <label>username</label>
+                    <input type="text" id="name" className="form-control" value={this.state.name} onChange={this.handleChangeName} />
+                    <label>password</label>
+                    <input type="password" id="pwd" className="form-control" value={this.state.pwd} onChange={this.handleChangePwd} />
+                    <input type="submit" className="btn btn-lg btn-primary btn-block"  value="提交" />
+                </form>
+            </div>
+
         );
     }
 }
