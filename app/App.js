@@ -1,6 +1,9 @@
 import React from 'react'
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom'//导入的方式跟之前有点变化
 
+import Nav from './Nav';
+import Main from './Main';
+
 // require('../bootstrap-3.3.7-dist/css/bootstrap.css');
 require("../bootstrap/bootstrap.min.css");
 require("../bootstrap/dashboard.css");
@@ -67,31 +70,10 @@ const List = function( match ) {
 
 const RouterList = function() {
     return(
-        <nav className="navbar navbar-inverse navbar-fixed-top">
-            <div className="container-fluid">
-                <div className="navbar-header">
-                    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span className="sr-only">Toggle navigation</span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                    </button>
-                    <a className="navbar-brand" href="https://v3.bootcss.com/examples/dashboard/#">Project name</a>
-                </div>
-                <div id="navbar" className="navbar-collapse collapse">
-                    <ul className="nav navbar-nav navbar-right">
-                        <li><a href="https://v3.bootcss.com/examples/dashboard/#">Dashboard</a></li>
-                        <li><a href="https://v3.bootcss.com/examples/dashboard/#">Settings</a></li>
-                        <li><a href="https://v3.bootcss.com/examples/dashboard/#">Profile</a></li>
-                        <li><a href="https://v3.bootcss.com/examples/dashboard/#">Help</a></li>
-                    </ul>
-                    <form className="navbar-form navbar-right">
-                        <input type="text" className="form-control" placeholder="Search..." />
-                    </form>
-                </div>
-            </div>
-        </nav>
+        <div>
+            <Nav />
+            <Main />
+        </div>
 
 );
 }
