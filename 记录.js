@@ -133,7 +133,7 @@ react组件编写和使用：
 | +--app
 | |--+components
 | |----name.js
-| |----link.js	
+| |----link.js
 | |--index.js
 | +--dist
 | +--node_modules
@@ -191,7 +191,7 @@ Webpack中 的css-loader和less-loader（webpack，npm,react项目，组件中�
 简介：在Webpack中，通过css-loader，可以实现在js文件中通过require的方式，来引入css。
 1.css-loader
 
-我们需要在js文件里，通过require的方式来引入css，我们来看具体的方法，首先需要安装css-loader， 
+我们需要在js文件里，通过require的方式来引入css，我们来看具体的方法，首先需要安装css-loader，
 style-loader(安装style-loader的目的是为了在html中以style的方式嵌入css)。
 
 npm install css-loader style-loader --save-dev
@@ -260,7 +260,7 @@ module.exports = {
 
 webpack    npm run server 执行 看效果
 
-2.less-loader 
+2.less-loader
 同样的，如果我们需要在js中，require，.less文件，那么我们需要增加包less-loader和less包
 npm install less,less-loader --save-dev
 
@@ -369,6 +369,26 @@ const RouterList = function() {
 
 
 export default RouterList
+
+
+
+箭头函数：
+class Home extends React.Component{
+    render() {
+        return (
+            <div>
+                home,home
+            </div>
+        )
+    };
+}
+
+
+ const Home1 = ()=>(
+     <div>
+         home.home
+     </div>
+ )
 
 
 
