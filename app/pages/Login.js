@@ -34,17 +34,21 @@ echo json_encode($rs);
 
      */
     request(){
-        // fetch('http://www.blog.com/lx.php').then((res)=>{
-        //     if(res.ok){
-        //         res.text().then((data)=>{
-        //             console.log(data);
-        //         })
-        //     }
-        // }).catch((res)=>{
-        //     console.log(res.status);
-        // });
 
-        axios.get('http://www.blog.com/lx.php')
+
+        // axios.get('http://127.0.0.1:5000/login')
+        //     .then(function (response) {
+        //         console.log(response);
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     });
+
+
+        axios.post('http://127.0.0.1:5000/login', {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+        })
             .then(function (response) {
                 console.log(response);
             })
@@ -111,6 +115,18 @@ class Login extends React.Component {
 
     handleSubmit(event) {
         alert('name: ' + this.state.name+"         pwd:"+this.state.pwd);
+        axios.post('http://127.0.0.1:5000/login', {
+            name: 'Fred',
+            pwd: 'Flintstone'
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+
         event.preventDefault();
     }
 
