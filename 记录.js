@@ -392,5 +392,58 @@ class Home extends React.Component{
 
 
 
+axios post: https://stackoverflow.com/questions/50451025/posting-form-data-with-axios-to-net-api
+axios: post提交：  multipart/form-data:  https://stackoverflow.com/questions/47874659/making-an-axios-post-request-with-multipart-form-data-via-react-native-debugger
+
+
+header中Content-type为的post写法： application/x-www-form-urlencoded 和 multipart/form-data，默认为application/x-www-form-urlencoded
+
+
+    multipart/form-data：
+
+   const formData = new FormData();
+        formData.append('name', 'tom');
+        formData.append('param', 0);
+        formData.append('secondParam', 0);
+
+        axios({
+            url: 'http://127.0.0.1:5000/login',
+            method: 'POST',
+             //data: 'name="abc"&pwd=123',
+            data:formData,
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+
+    application/x-www-form-urlencoded： key=value&key1=value1...形式
+
+                axios({
+            url: 'http://127.0.0.1:5000/login',
+            method: 'POST',
+             data: 'name="abc"&pwd=123',
+            // data:formData,
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+
+
 
 */

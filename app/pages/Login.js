@@ -36,44 +36,82 @@ echo json_encode($rs);
     request(){
 
 
-        // axios.get('http://127.0.0.1:5000/login')
-        //     .then(function (response) {
+        // let config = {
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data'
+        //     }
+        // }
+        // axios.post('http://127.0.0.1:5000/login',  {
+        //     name: 'Fred',
+        //     pwd: 'Flintstone'
+        // },config).then( res => {
+        //     console.log(res)
+        // }).catch( res => {
+        //     console.log(res)
+        // })
+
+
+        // axios.post('http://127.0.0.1:5000/login', {
+        //     name: 'Fred',
+        //     lastName: 'Flintstone'
+        // })
+
+        //
+        // axios({
+        //     method: 'post',
+        //     url: 'http://127.0.0.1:5000/login',
+        //     data: {
+        //         name: 'Fred',
+        //         lastName: 'Flintstone'
+        //     }
+        // }).then(function (response) {
         //         console.log(response);
         //     })
         //     .catch(function (error) {
         //         console.log(error);
         //     });
 
+        const formData = new FormData();
+        formData.append('name', 'tom');
+        formData.append('param', 0);
+        formData.append('secondParam', 0);
 
-        axios.post('http://127.0.0.1:5000/login', {
-            firstName: 'Fred',
-            lastName: 'Flintstone'
+        axios({
+            url: 'http://127.0.0.1:5000/login',
+            method: 'POST',
+             //data: 'name="abc"&pwd=123',
+            data:formData,
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'multipart/form-data'
+            }
         })
-            .then(function (response) {
+            .then(response => {
                 console.log(response);
             })
-            .catch(function (error) {
-                console.log(error);
+            .catch(error => {
+                console.error(error);
             });
     }
 
 
     render() {
+        this.request();
             return(
 
                 <div className="container">
 
-                    <form className="form-signin">
-                        <h2 className="form-signin-heading">Please sign in</h2>
-                        <label htmlFor="inputEmail" className="sr-only">Email address</label>
-                        <input type="email" id="inputEmail" className="form-control" placeholder="Email address"
-                               required="" autoFocus="" />
-                            <label htmlFor="inputPassword" className="sr-only">Password</label>
-                            <input type="password" id="inputPassword" className="form-control" placeholder="Password"
-                                   required="" />
+                    {/*<form className="form-signin">*/}
+                        {/*<h2 className="form-signin-heading">Please sign in</h2>*/}
+                        {/*<label htmlFor="inputEmail" className="sr-only">Email address</label>*/}
+                        {/*<input type="email" id="inputEmail" className="form-control" placeholder="Email address"*/}
+                               {/*required="" autoFocus="" />*/}
+                            {/*<label htmlFor="inputPassword" className="sr-only">Password</label>*/}
+                            {/*<input type="password" id="inputPassword" className="form-control" placeholder="Password"*/}
+                                   {/*required="" />*/}
 
-                                <input type="submit" className="btn btn-lg btn-primary btn-block" />Sign in
-                    </form>
+                                {/*<input type="submit" className="btn btn-lg btn-primary btn-block" />Sign in*/}
+                    {/*</form>*/}
 
                 </div>
                 );
@@ -152,4 +190,4 @@ class Login extends React.Component {
 }
 
 
-export default Login
+export default Login11
