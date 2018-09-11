@@ -77,7 +77,7 @@ echo json_encode($rs);
         formData.append('secondParam', 0);
 
         axios({
-            url: 'http://127.0.0.1:5000/login',
+            url: 'http://www.developer1.cn/login',
             method: 'POST',
              //data: 'name="abc"&pwd=123',
             data:formData,

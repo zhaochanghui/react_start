@@ -445,26 +445,61 @@ header中Content-type为的post写法： application/x-www-form-urlencoded 和 m
 
 
 
-nginx,flask,uwsg:  https://blog.csdn.net/buzaiqq/article/details/78984251
 
 
-[uwsgi]
- pythonpath = /usr/local/python3/   # 可删除
-chdir           = /www/ini/flask/
-wsgi-file  = /www/wwwroot/py/index.py
-#socket file's location
-socket = /www/ini/flask/index.sock
-
-#permissions for the socket file
-chmod-socket    = 666
-
-#the variable that holds a flask application inside the module imported at line #6
-callable = app
-
-#location of log files
-logto = /www/ini/flask/index.log
+nginx,gunicorn,flask配置：
+参考： https://blog.csdn.net/qq_14898613/article/details/79581209
+     https://segmentfault.com/a/1190000011075177
 
 
+配置文件必须是一个python文件，只是将命令行中的参数写进py文件中而已，如果需要设置哪个参数，则在py文件中为该参数赋值即可。例如：
+
+pip3 install gunicorn
+
+目录结构：
+/www/wwwroot/py
+[root@VM_227_64_centos py]# ls
+example.py  test.py  __pycache__
+
+test.py:
+
+#test.py
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return 'hello world'
+
+if __name__ == '__main__':
+    app.run()
+
+
+
+# example.py
+bind = "127.0.0.1:8000"
+workers = 2
+
+运行gunicorn：   test  是test.py  项目文件
+
+$ gunicorn -c example.py test:app
+
+等同于
+
+$ gunicorn -w 2 -b 127.0.0.1:8000 test:app
+
+
+
+nginx:   8000端口和上面的对应
+
+server {
+    listen       8000;
+    server_name  flasktest;
+    location / {
+            proxy_pass http://127.0.0.1:8000;
+    }
+
+}
 
 
 */
