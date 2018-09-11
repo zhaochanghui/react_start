@@ -445,5 +445,26 @@ header中Content-type为的post写法： application/x-www-form-urlencoded 和 m
 
 
 
+nginx,flask,uwsg:  https://blog.csdn.net/buzaiqq/article/details/78984251
+
+
+[uwsgi]
+ pythonpath = /usr/local/python3/   # 可删除
+chdir           = /www/ini/flask/
+wsgi-file  = /www/wwwroot/py/index.py
+#socket file's location
+socket = /www/ini/flask/index.sock
+
+#permissions for the socket file
+chmod-socket    = 666
+
+#the variable that holds a flask application inside the module imported at line #6
+callable = app
+
+#location of log files
+logto = /www/ini/flask/index.log
+
+
+
 
 */
